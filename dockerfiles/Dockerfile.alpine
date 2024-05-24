@@ -1,0 +1,66 @@
+# Use Alpine Linux as the base image
+FROM alpine:3.19 AS base
+
+# Metadata indicating the maintainer of this Dockerfile
+LABEL MAINTAINER="gvatsal60"
+# Description of the purpose of this image
+LABEL DESCRIPTION="Build Environment"
+
+# Update and install necessary packages
+RUN apk update && \
+    apk upgrade && \
+    # Install necessary tools
+    apk add --no-cache \
+    git \
+    build-base \
+    cmake \
+    clang \
+    openssl \
+    openssl-dev \
+    openjdk11 \
+    python3 \
+    xz \
+    net-tools \
+    gtest \
+    gtest-dev \
+    && \
+    # Clean up
+    rm -rf /var/cache/apk/* && \
+    # Create a non-root user
+    adduser -D nonroot
+
+# Install gtest
+FROM base AS gtest
+ARG GTEST_VER=v1.14.0
+RUN set -x && \
+    SRC=/usr/local/src/google-test-${GTEST_VER} && \
+    mkdir -p "$SRC" && cd "$SRC" && \
+    # Download and extract gtest source code
+    wget -O - https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz \
+    | tar xz -C "$SRC" --strip-components=1 && \
+    # Create build directory and compile gtest
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make -j8 && make install DESTDIR=/opt/gtest
+
+# Build Final Image
+FROM base AS build
+
+# Copy gtest binaries from the gtest stage
+COPY --from=gtest /opt/gtest /
+
+# Set environment variables for locale
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+
+# Copy non-root user from base image
+COPY --from=base /etc/passwd /etc/passwd
+COPY --from=base /etc/group /etc/group
+
+# Switch to non-root user
+USER nonroot
+
+# Define the default command to run when the container starts
+ENTRYPOINT ["/bin/ash", "-c"]
