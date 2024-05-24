@@ -21,6 +21,8 @@ RUN apk update && \
     python3 \
     xz \
     net-tools \
+    mysql-dev \
+    mysql-client \
     gtest \
     gtest-dev \
     && \

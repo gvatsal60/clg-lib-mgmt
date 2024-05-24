@@ -1,0 +1,28 @@
++--------------------------------+          +-------------------------+
+|          User Interface        |          |     Database Management  |
++--------------------------------+          |         System (DBMS)    |
+| - displayBooks()               |          | - addBook()              |
+| - searchBooks()                |          | - updateBook()           |
+| - displayTransactionHistory()  |          | - deleteBook()           |
+| - acceptUserInput()            |          | - addTransaction()       |
++--------------------------------+          | - updateTransaction()    |
+                                            | - deleteTransaction()    |
+                                            +-------------------------+
+                                                        |
+                                                        v
+                                            +--------------------------+
+                                            |     Book Management      |
+                                            +--------------------------+
+                                            | - addBook()              |
+                                            | - updateBook()           |
+                                            | - deleteBook()           |
+                                            +--------------------------+
+                                                        |
+                                                        v
+                                            +--------------------------+
+                                            |   Transaction Management |
+                                            +--------------------------+
+                                            | - addTransaction()       |
+                                            | - updateTransaction()    |
+                                            | - deleteTransaction()    |
+                                            +--------------------------+
