@@ -1,6 +1,12 @@
-#include <cstdio>
+#include "db.hpp"
 
 int main() {
-  printf("Hello World\n");
+  google::InitGoogleLogging("LibraryManagement");
+  FLAGS_logtostderr = 0;  // Disable logging to stderr (optional)
+
+  // Use the library object as before
+
+  google::ShutdownGoogleLogging();
+
   return 0;
 }

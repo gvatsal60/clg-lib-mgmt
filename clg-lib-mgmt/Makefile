@@ -1,7 +1,8 @@
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -g
-LDFLAGS := -lgtest -lgtest_main -pthread
+LDFLAGS := -pthread -lmysqlclient -lglog
+TEST_LDFLAGS := -lgtest -lgtest_main
 
 MKDIR := mkdir -p
 RMDIR := rm -rf
@@ -35,7 +36,7 @@ all: build test
 
 $(TARGET): $(OBJECTS)
 	@$(MKDIR) $(BIN_DIR)
-	@$(CXX) $^ -o $(BIN_DIR)/$(TARGET)
+	@$(CXX) $^ $(LDFLAGS) -o $(BIN_DIR)/$(TARGET)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT)
 	@$(MKDIR) $(dir $@) $(DEP_DIR)
@@ -44,7 +45,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT)
 
 $(TEST_TARGET): $(filter-out $(BUILD_DIR)/main.o, $(OBJECTS)) $(TEST_OBJECTS)
 	@$(MKDIR) $(BIN_DIR)
-	@$(CXX) $^ $(LDFLAGS) -o $(BIN_DIR)/$(TEST_TARGET)
+	@$(CXX) $^ $(LDFLAGS) $(TEST_LDFLAGS) -o $(BIN_DIR)/$(TEST_TARGET)
 
 $(BUILD_DIR)/%.o: $(TEST_DIR)/%.$(SRC_EXT)
 	@$(MKDIR) $(dir $@) $(DEP_DIR)

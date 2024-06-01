@@ -1,17 +1,5 @@
 # TODO
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://img.shields.io/github/license/gvatsal60/CppDockerMakeTemplate)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/gvatsal60/CppDockerMakeTemplate/build.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=gvatsal60_clg-lib-mgmt&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=gvatsal60_clg-lib-mgmt)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://GitHub.com/gvatsal60/CppDockerMakeTemplate/graphs/commit-activity)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/gvatsal60/CppDockerMakeTemplate.svg)](https://GitHub.com/gvatsal60/CppDockerMakeTemplate/pull/)
-[![GitHub issues](https://img.shields.io/github/issues/gvatsal60/CppDockerMakeTemplate.svg)](https://GitHub.com/gvatsal60/CppDockerMakeTemplate/issues/)
-[![GitHub forks](https://img.shields.io/github/forks/gvatsal60/CppDockerMakeTemplate.svg)](https://GitHub.com/gvatsal60/CppDockerMakeTemplate/network/)
-[![GitHub stars](https://img.shields.io/github/stars/gvatsal60/CppDockerMakeTemplate.svg)](https://GitHub.com/gvatsal60/CppDockerMakeTemplate/stargazers)
-
-# CppDockerMakeTemplate
-
-This repository serves as a template for setting up a development environment to run C++ code inside Docker containers using Makefiles. Whether you're working on a personal project or a team-based endeavor, this template streamlines the process of containerizing your C++ applications, making them portable and easy to manage across different environments.
 
 ## Prerequisites
 
